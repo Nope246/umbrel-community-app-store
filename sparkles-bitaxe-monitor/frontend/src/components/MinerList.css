@@ -1,0 +1,134 @@
+.miner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 800px;
+  overflow-y: auto;
+}
+
+.miner-list-empty {
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.miner-card {
+  background-color: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.miner-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.miner-card.compare-mode {
+  cursor: pointer;
+}
+
+.miner-card.selected {
+  border-color: var(--accent-color);
+  background-color: var(--bg-tertiary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.miner-checkbox {
+  margin-bottom: 1rem;
+}
+
+.miner-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--accent-color);
+}
+
+.miner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.miner-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-active {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.status-unknown {
+  background-color: var(--text-muted);
+  color: white;
+}
+
+.miner-type {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.miner-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.metric-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.metric-value.cost {
+  color: var(--accent-color);
+}
+
+@media (min-width: 1920px) {
+  .miner-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .metric-value {
+    font-size: 1.25rem;
+  }
+  
+  .metric-label {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .miner-metrics {
+    grid-template-columns: 1fr;
+  }
+}
