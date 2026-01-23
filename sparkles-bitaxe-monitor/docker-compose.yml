@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sparkles-bitaxe-monitor-backend
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - DATA_DIR=/app/data
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "3001:3001"
+    networks:
+      - bitaxe-monitor-network
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sparkles-bitaxe-monitor-frontend
+    restart: unless-stopped
+    environment:
+      - REACT_APP_API_URL=http://backend:3001/api
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - bitaxe-monitor-network
+
+networks:
+  bitaxe-monitor-network:
+    driver: bridge
