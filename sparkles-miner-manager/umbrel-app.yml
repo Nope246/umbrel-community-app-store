@@ -1,0 +1,48 @@
+# Umbrel App Manifest
+# This file defines the app metadata for UmbrelOS
+
+manifestVersion: 1
+
+id: sparkles-miner-manager
+version: 1.0.0
+name: Miner Manager
+tagline: "Manage Bitaxe and Nano3S Bitcoin miners from your Umbrel node"
+description: |
+  A comprehensive management application for Bitaxe and Nano3S Bitcoin miners.
+  
+  Features include:
+  - Automatic network scanning and device discovery
+  - Live Bitcoin price and network statistics
+  - Mining dashboard with profitability estimates
+  - Firmware and web UI updates
+  - Fan control and device settings
+  - LED light controls (when supported)
+  - Real-time monitoring and statistics
+  - Share tracking (approved/rejected)
+  - Block finding estimates based on hash rate
+
+category: utilities
+developer: Your Name
+icon: https://raw.githubusercontent.com/yourusername/miner-manager/main/icon.png
+submitter: Your Name
+submission: https://github.com/Nope246/umbrel-community-app-store
+repo: https://github.com/Nope246/umbrel-community-app-store
+support: https://github.com/Nope246/umbrel-community-app-store/issues
+website: https://github.com/Nope246/umbrel-community-app-store
+
+port: 3000
+path: /
+
+# App does not require privileged mode
+privileged: false
+
+# Persistent storage paths
+volumes:
+  data: /data
+  logs: /app/logs
+  firmware: /app/firmware
+
+# Environment variables
+env:
+  - NODE_ENV=production
+  - PORT=3000

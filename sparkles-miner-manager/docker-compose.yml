@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  app_proxy:
+    image: getumbrel/app-proxy:latest
+    container_name: sparkles-miner-manager_app_proxy
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - APP_HOST=sparkles-miner-manager_miner-manager_1
+      - APP_PORT=3000
+    depends_on:
+      - miner-manager
+
+  miner-manager:
+    image: nope246/miner-manager:latest
+    container_name: sparkles-miner-manager_miner-manager_1
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      # Network range for scanning (auto-detected if not set)
+      # - SCAN_NETWORK_RANGE=192.168.1.0/24
+      # Scan interval in minutes (default: 5)
+      - SCAN_INTERVAL=5
+      # Power cost per kWh for profitability (default: $0.10)
+      # - POWER_COST_PER_KWH=0.10
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+      - ${APP_DATA_DIR}/logs:/app/logs
+      - ${APP_DATA_DIR}/firmware:/app/firmware
