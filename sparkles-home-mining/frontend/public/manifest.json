@@ -1,0 +1,16 @@
+{
+  "short_name": "Sparkles Mining",
+  "name": "Sparkles Home Mining Dashboard",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0a0e27",
+  "background_color": "#0a0e27"
+}

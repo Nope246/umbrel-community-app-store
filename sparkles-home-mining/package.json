@@ -1,0 +1,31 @@
+{
+  "name": "sparkles-home-mining",
+  "version": "1.0.0",
+  "description": "Dashboard for monitoring Home Bitcoin miners on your network",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:frontend\"",
+    "dev:server": "nodemon server/index.js",
+    "dev:frontend": "cd frontend && npm start"
+  },
+  "keywords": [
+    "umbrel",
+    "bitcoin",
+    "mining",
+    "dashboard"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "concurrently": "^8.2.2"
+  }
+}

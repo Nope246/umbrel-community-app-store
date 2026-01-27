@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  sparkles-home-mining:
+    build: .
+    container_name: sparkles-home-mining
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - APP_PORT=${APP_PORT:-3000}
+    volumes:
+      - ./data:/app/data
+    networks:
+      - umbrel
+
+networks:
+  umbrel:
+    external: true
